@@ -5,7 +5,7 @@ set -euo pipefail
 declare -ri length=${1:-3}
 
 function separate() {
-  awk NF=NF FPAT=. OFS="\n"
+  sed -r 's/(.)/\1\n/g'
 }
 
 # Separate the characters with newlines
