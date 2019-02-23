@@ -15,12 +15,13 @@ function password() {
   (
     shuf -n"$length" /usr/share/dict/words;       # take n random words
     # generate a random string
-    (grep -Eoa --max-count 1 '[A-Za-z0-9]{3,4}' < /dev/random | head -n1 ) ;
+    (grep -Eoa --max-count 1 '[A-Za-z0-9_.-]{3,4}' < /dev/random | head -n1 ) ;
     shuf -n1 <<< "$CHARACTERS";
   ) | shuf |
     tr '\n' ' ' |               # replace newlines with spaces
     sed -r "s/'//g" |           # remove quotes, they're bothersome
-    sed -r 's/ $//'             # remove trailing space
+    sed -r 's/ $//' |           # remove trailing space
+    iconv -f utf8 -t ascii//TRANSLIT # remove accents
 }
 
 password; echo
