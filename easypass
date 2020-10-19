@@ -7,6 +7,16 @@ declare -i count=${2:-1}
 
 DICTIONARY="${DICTIONARY:-/usr/share/dict/words}"
 
+if ! [[ -f "${DICTIONARY}" ]]; then
+   >&2 echo 'Dictionary file is unreadable, aborting'
+   exit 1
+fi
+
+if ! (( $(wc -l < "${DICTIONARY}") > 50000 )); then
+  >&2 echo 'Dictionary too small, aborting'
+  exit 2
+fi
+
 function separate() {
   # Separate input on stdin with newlines
   sed -r 's/(.)/\1\n/g'
