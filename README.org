@@ -1,0 +1,24 @@
+#+title: easypass
+#+author: Rune Juhl Jacobsen
+
+~easypass~ is a simple password generator that generates passwords that are
+
++ easy to read
++ easy to relay
++ easy to remember
++ secure
+
+* Example
+#+begin_example
+$ ./easypass 2 10
+nacre QVO | kite
+theists brackets & 6Cy
+countermanded skinniness , 3Te
+barley @ RNS mowed
+j8k * loafers overact
+classics 1P4 Fishers ^
+teazles Y4u + adjudicator
+I89 % catnips falcons
+brunch ?SG , grasshoppers
+handkerchieves \ umpires GDn
+#+end_example
